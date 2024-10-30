@@ -84,6 +84,7 @@ h1.celebration {
 
   .flag__right {
       transform: rotate(5deg) translate(5px, 10px) scaleX(-1);
+      width: 150px; 
   }
 
   .celebration hidden {
