@@ -3,8 +3,11 @@ const messageElement = document.getElementById("celebrationMessage");
 const images = [
     "public/images/images1.jpg",
     "public/images/images2.jpg", 
-    "public/images/images3.jpg",
     "public/images/images4.jpg",
+    "public/images/images5.jpg",
+    "public/images/images6.jpg",
+    "public/images/images7.jpg",
+    "public/images/images8.jpg"
 ];
 
 const letterText = [
