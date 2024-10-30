@@ -34,12 +34,22 @@ function typeLetter() {
     }
 }
 
+
+
+
 document.getElementById("nextButton").addEventListener("click", () => {
-    document.getElementById("nextButton").style.display = 'none'; // Ẩn nút ngay khi nhấn
-    document.querySelector('.container').style.opacity = '0.5'; // Mờ nền chính
+    const audio = document.getElementById("backgroundMusic");
+
+    if (audio.paused) {
+        audio.muted = false; 
+        audio.play();
+    }
+
+    document.getElementById("nextButton").style.display = 'none'; 
+    document.querySelector('.container').style.opacity = '0.5'; 
     showOverlay();
-    showMockup(); // Gọi hàm để hiển thị mockup
-});
+    showMockup(); 
+})
 
 function showOverlay() {
   const overlay = document.getElementById("overlay");
@@ -54,12 +64,12 @@ function showMockup() {
     const mockupText = document.getElementById("mockupText");
 
     mockupText.innerHTML = '';
-    mockup.classList.remove('hidden'); // Hiện mockup
+    mockup.classList.remove('hidden');
 
-    // Thêm lớp show để hiện mockup
+ 
     setTimeout(() => {
         mockup.classList.add('show');
-    }, 10); // Để có thời gian cho lớp hidden được loại bỏ
+    }, 10); 
 
     function typeMockupText() {
         if (textIndex < letterText[currentLetterIndex].length) {
@@ -74,11 +84,11 @@ function showMockup() {
                     typeMockupText();
                 } else {
                     setTimeout(() => {
-                      mockup.classList.remove('show'); // Ẩn mockup
+                      mockup.classList.remove('show');
                       const overlay = document.getElementById("overlay");
-                      overlay.classList.remove('show'); // Ẩn lớp overlay
-                      document.querySelector('.container').style.opacity = '1'; // Đem nền chính về trạng thái bình thường
-                      showImages(); // Gọi hàm để hiển thị hình ảnh
+                      overlay.classList.remove('show'); 
+                      document.querySelector('.container').style.opacity = '1'; 
+                      showImages(); 
                     }, 2000);
                 }
             }, 2000);
@@ -104,16 +114,13 @@ function showImages() {
 function showNextImage() {
   const birthdayImage = document.getElementById("birthdayImage");
   if (currentImageIndex < images.length) {
-      // Ẩn hình ảnh hiện tại
       birthdayImage.classList.remove('show');
       
-      // Cập nhật ảnh mới
       birthdayImage.src = images[currentImageIndex];
       
-      // Thêm lớp show sau một khoảng thời gian ngắn
       setTimeout(() => {
           birthdayImage.classList.add('show');
-      }, 50); // Thời gian ngắn để cho việc thay đổi src hoàn thành
+      }, 50); 
       currentImageIndex++;
   }
 }
